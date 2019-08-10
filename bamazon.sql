@@ -22,9 +22,6 @@ VALUES (
     92
 );
 
-
-
-
 INSERT INTO products 
 VALUES (
     null,
@@ -33,12 +30,13 @@ VALUES (
     49.95,
     9
 );
+
 INSERT INTO products 
 VALUES (
     null,
     'National Parks Exploration Series - Glacier National Park - Crown of the Continent',
     'Movies & TV',
-    $5.49,
+    5.49,
     211
 );
 
@@ -46,57 +44,56 @@ VALUES (
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    'Zinus Josh Traditional Upholstered 77.5 Inch Sofa/Living Room Couch, Beige Weave',
+    'Home & Kitchen',
+    399.99,
+    11
 );
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    'Pogo Tritan Water Bottle, 32 Oz.',
+    'Sports & Outdoors',
+    8.99,
+    213
 );
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    'Keurig K-Mini Single Serve Coffee Maker, Black',
+    'Grocery & Gourmet Food',
+    79.99,
+    159
 );
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    'Back to Mine: Nightmares on Wax',
+    'MP3 Music',
+    9.49,
+    498
 );
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    'AnBnCn Salad Soup 3-Pack-65 Oz Super Large Stackable Round White Fine Porcelain Cereal Pasta Bowl-Sets',
+    'Grocery & Gourmet Food',
+    43.99,
+    16
 );
 INSERT INTO products 
 VALUES (
     null,
-    'here',
-    'here',
-    66,
-    66
+    "Young MC - Stone Cold Rhymin'",
+    "MP3 Music",
+    9.49,
+    311
 );
 INSERT INTO products 
 VALUES (
     null,
+    'Public Enemy - It Takes A Nation Of Millions To Hold Us Back',
     'here',
-    'here',
-    66,
-    66
+    11.99,
+    1019
 );
-
