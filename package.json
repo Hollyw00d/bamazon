@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Hollyw00d/bamazon/issues"
   },
-  "homepage": "https://github.com/Hollyw00d/bamazon#readme"
+  "homepage": "https://github.com/Hollyw00d/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.5.0",
+    "mysql": "^2.17.1"
+  }
 }
