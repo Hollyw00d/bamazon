@@ -18,11 +18,10 @@ function showAllItems() {
             response.map(function(item) {
                 console.log(`Item Id: ${item.item_id} | Product Name: ${item.product_name} | Price: ${item.price} | Stock Quantity: ${item.stock_quantity}`);
             });
+            start();
         });
-        connection.end();
     });
 }
-
 
 showAllItems();
 
@@ -39,12 +38,17 @@ function start() {
             message: 'What quantity of the item would you like to buy?'
         }
     ])
-    .then(function() {
-        connection.query("SELECT * FROM products WHERE id = 1", function(err, response) {
+    .then(function(myProduct) {
+        var query = "SELECT item_id, product_name, price, stock_quantity FROM products WHERE item_id = ?"; 
+        connection.query(query, [ myProduct.idItemToBuy ], function(err, item) {
             if(err) throw err;
-            console.log('Table row showing! ' + idItemToBuy.id);
+
+            var totalCost = Number.parseFloat(item[0].price * parseInt(myProduct.quantityItemToBuy)).toFixed(2);
+
+            console.log(`You purchased ${myProduct.quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalCost} ($${item[0].price} per item).`);
+            console.log(item);
+
+            connection.end();
         });
     });
 }
-
-start();
