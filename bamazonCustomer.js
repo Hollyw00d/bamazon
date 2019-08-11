@@ -23,5 +23,28 @@ function showAllItems() {
     });
 }
 
+
 showAllItems();
 
+function start() {
+    inquirer.prompt([
+        {
+            name: 'idItemToBuy',
+            type: 'input',
+            message: 'What is the ID of the product you would like to buy?'
+        },
+        {
+            name: 'quantityItemToBuy',
+            type: 'input',
+            message: 'What quantity of the item would you like to buy?'
+        }
+    ])
+    .then(function() {
+        connection.query("SELECT * FROM products WHERE id = 1", function(err, response) {
+            if(err) throw err;
+            console.log('Table row showing! ' + idItemToBuy.id);
+        });
+    });
+}
+
+start();
