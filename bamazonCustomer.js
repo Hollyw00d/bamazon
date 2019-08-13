@@ -39,14 +39,18 @@ function start() {
         }
     ])
     .then(function(myProduct) {
-        var query = "SELECT item_id, product_name, price, stock_quantity FROM products WHERE item_id = ?"; 
-        connection.query(query, [ myProduct.idItemToBuy ], function(err, item) {
+        var query1 = "SELECT item_id, product_name, price, stock_quantity FROM products WHERE item_id = ?"; 
+        connection.query(query1, [ myProduct.idItemToBuy ], function(err, item) {
             if(err) throw err;
 
             var totalCost = Number.parseFloat(item[0].price * parseInt(myProduct.quantityItemToBuy)).toFixed(2);
 
-            console.log(`You purchased ${myProduct.quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalCost} ($${item[0].price} per item).`);
-            console.log(item);
+            if(myProduct.quantityItemToBuy <= item[0].stock_quantity) {
+                console.log(`You purchased ${myProduct.quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalCost} ($${item[0].price} per item).`);
+            }
+            else {
+                console.log(' Insufficient quantity!');
+            }
 
             connection.end();
         });
