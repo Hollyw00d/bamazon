@@ -39,6 +39,7 @@ function start() {
         }
     ])
     .then(function(myProduct) {
+
         var query1 = "SELECT item_id, product_name, price, stock_quantity FROM products WHERE item_id = ?"; 
         connection.query(query1, [ myProduct.idItemToBuy ], function(err, item) {
             if(err) throw err;
@@ -54,5 +55,12 @@ function start() {
 
             connection.end();
         });
+
+        // Update products where item_id = myProduct.idItemToBuy
+
+        // Create separate function that will take id and number and call function
+        // inside of query
+        
+        
     });
 }
