@@ -49,11 +49,12 @@ function start() {
         connection.query(query, [ myProduct.idItemToBuy ], function(err, item) {
             if(err) throw err;
 
-            if(myProduct.quantityItemToBuy <= item[0].stock_quantity) {
-                var quantityPurchased = parseInt(myProduct.quantityItemToBuy);
-                var totalProductCost = Number.parseFloat(item[0].price * quantityPurchased).toFixed(2);
-                var totalProductQuantityLeft = item[0].stock_quanity - quantityPurchased;
+            var quantityPurchased = parseInt(myProduct.quantityItemToBuy);
+            var totalProductCost = Number.parseFloat(item[0].price * quantityPurchased).toFixed(2);
+            var totalProductQuantityLeft = item[0].stock_quantity - quantityPurchased;
 
+
+            if(myProduct.quantityItemToBuy <= item[0].stock_quantity) {
                 console.log(`You purchased ${myProduct.quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalProductCost} ($${item[0].price} per item).`);
                 updateProductQuantity(totalProductQuantityLeft, item[0].item_id);
             }
