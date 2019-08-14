@@ -22,14 +22,22 @@ function showAllItems() {
             response.map(function(item) {
                 console.log(`Item Id: ${item.item_id} | Product Name: ${item.product_name} | Price: ${item.price} | Stock Quantity: ${item.stock_quantity}`);
             });
+            // Function call to execute inquirer,
+            // run MySQL queries to show single row
+            // of selected item for purchase, and
+            // update item quantity after purchase 
             start();
         });
     });
 }
 
-// Function call
+// Function call to show all items
 showAllItems();
 
+// Function to execute inquirer,
+// run MySQL queries to show single row
+// of selected item for purchase, and
+// update item quantity after purchase 
 function start() {
     inquirer.prompt([
         {
@@ -44,18 +52,32 @@ function start() {
         }
     ])
     .then(function(myProduct) {
+        // Item id selected 
+        var idItemToBuy = myProduct.idItemToBuy;
 
+        // MySQL query to select columns
+        // from products table where id is
+        // product id selected from Inquirer 
         var query = "SELECT item_id, product_name, price, stock_quantity FROM products WHERE item_id = ?"; 
-        connection.query(query, [ myProduct.idItemToBuy ], function(err, item) {
+
+        // Executing MySQL query shown above
+        connection.query(query, [ idItemToBuy ], function(err, item) {
             if(err) throw err;
+            // Inquirer variables
+            var quantityItemToBuy = myProduct.quantityItemToBuy;
 
-            var quantityPurchased = parseInt(myProduct.quantityItemToBuy);
-            var totalProductCost = Number.parseFloat(item[0].price * quantityPurchased).toFixed(2);
-            var totalProductQuantityLeft = item[0].stock_quantity - quantityPurchased;
+            // MySQL query variables
+            var price = item[0].price;
+            var stockQuantity = item[0].stock_quantity;
 
+            // Calculated variables using Inquirer
+            // and MySQL query variables
+            var quantityPurchased = parseInt(quantityItemToBuy);
+            var totalProductCost = Number.parseFloat(price * quantityPurchased).toFixed(2);
+            var totalProductQuantityLeft = stockQuantity - quantityPurchased;
 
-            if(myProduct.quantityItemToBuy <= item[0].stock_quantity) {
-                console.log(`You purchased ${myProduct.quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalProductCost} ($${item[0].price} per item).`);
+            if(quantityItemToBuy <= stockQuantity) {
+                console.log(`You purchased ${quantityItemToBuy} of ${item[0].product_name} at a total cost of $${totalProductCost} ($${price} per item).`);
                 updateProductQuantity(totalProductQuantityLeft, item[0].item_id);
             }
             else {
