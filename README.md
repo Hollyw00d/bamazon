@@ -6,3 +6,5 @@
 node bamazonCustomer
 ````
 2. Then you'll see the a list of all products in the <b>bamazon</b> database, <b>products</b> table:  
+![List of all products in bamazon Table](/images/bamazon-select-all.png)  
+3. 
