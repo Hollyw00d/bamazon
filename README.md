@@ -12,5 +12,7 @@ node bamazonCustomer
 4. Then the you'll see the name of the item you purchased, total cost of the item, and per unit item cost:  
 ![Details of item purchased on bamazon](/images/bamazon-show-item-purchased.png)  
 5. Run `node bamazonCustomer` again, and you'll see that the item purchased (<b>National Parks Exploration Series - Glacier National Park - Crown of the Continent</b>) quanity went down from <b>211</b> to <b>201</b>:
-![Proof that bamazon quantity went down](/images/bamazon-proof-that-item-quantity-went-down.png)
-6. On your keyboard press <b>control</b> and <b>c</b> at the same time to escape.
+![Proof that bamazon quantity went down](/images/bamazon-proof-that-item-quantity-went-down.png)  
+6. If you try to purchase another item and the quantity amount you want is larger than the quantity available you'll see an <b>Insufficient quantity!</b> error message and NOT be able to purchase said item:  
+![Insufficient quantity error message](/images/bamazon-insufficient-quantity-error-msg.png)
+7. On your keyboard press <b>control</b> and <b>c</b> at the same time to escape.
